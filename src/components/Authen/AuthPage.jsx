@@ -5,7 +5,7 @@ export default function AuthPage() {
   return (
     <div className="mx-auto mt-5" style={{ width: '400px' }}>
       <div style={{ height: '250px' }} />
-      <form className="container" align="center">
+      <form className="container bg-secondary rounded-3 py-3" align="center">
         <div className="mb-3">
           <h2>Username</h2>
           <input
