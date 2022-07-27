@@ -1,6 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
-import indexRouter from './routes/indexRouter';
+import AuthRouter from './routes/AuthRouter';
+import RegRouter from './routes/RegRouter';
 // import apiRouter from './routes/apiRouter';
 
 const PORT = 3000;
@@ -11,7 +12,9 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use('/', indexRouter);
+app.use('/', AuthRouter);
+app.use('/registration', RegRouter);
+
 // app.use('/api/v1', apiRouter);
 
 app.listen(PORT, () => {

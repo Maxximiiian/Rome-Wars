@@ -2,10 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function AuthPage() {
+  const signInHandler = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="mx-auto mt-5" style={{ width: '400px' }}>
       <div style={{ height: '250px' }} />
-      <form className="container bg-secondary rounded-3 py-3" align="center">
+      <form className="container bg-secondary rounded-3 py-3" align="center" onSubmit={signInHandler}>
         <div className="mb-3">
           <h2>Username</h2>
           <input
@@ -32,7 +36,7 @@ export default function AuthPage() {
         <div className="mx-auto mt-5">
           <h2>Don't register yet?</h2>
         </div>
-        <Link to="/Registration" className="btn btn-danger">Registration</Link>
+        <Link to="/registration" className="btn btn-danger">Registration</Link>
       </form>
     </div>
   );
