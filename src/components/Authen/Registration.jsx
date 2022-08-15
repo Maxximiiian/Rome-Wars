@@ -1,17 +1,29 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import play from 'audio-play';
+import load from 'audio-loader';
 
 export default function Registration() {
+  const playHandler = async () => {
+    const sound = await load('/sound/whoosh.mp3');
+    play(sound);
+  };
+
   const [input, setInput] = useState({ username: '', password: '', repeat: '' });
   const changeHandler = (e) => setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  const signUpHandler = (e) => {
-    e.preventDefault();
+  const signUpHandler = async (event) => {
+    event.preventDefault();
+    const response = await fetch('/registration', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(Object.fromEntries(new FormData(event.target))),
+    });
   };
 
   return (
     <div className="mx-auto mt-5" style={{ width: '400px' }}>
       <div style={{ height: '250px' }} />
-      <form className="container bg-secondary rounded-3 py-3" align="center" onSubmit={signUpHandler}>
+      <form className="container bg-secondary rounded-3 py-3 item" align="center" onSubmit={signUpHandler}>
         <div className="mb-3">
           <h2>Username</h2>
           <input
@@ -51,8 +63,8 @@ export default function Registration() {
         </div>
         <div>
           <button type="submit" className="btn btn-danger">Sign up!</button>
-          <h1></h1>
-          <Link to="/" class="btn btn-outline-danger float-left">←Back to Auth</Link>
+          <h1 />
+          <Link to="/" onClick={playHandler} class="btn btn-outline-danger float-left">←Back to Auth</Link>
         </div>
 
       </form>

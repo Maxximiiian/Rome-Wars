@@ -10,21 +10,30 @@
     <link type="image/png" sizes="16x16" rel="icon" href=”https://oboi-telefon.ru/wallpapers/10915/30467.jpg”>
 
     <style>
-      .bg-secondary {--bs-bg-opacity: 0.8;}
-      .bg-light {--bs-bg-opacity: 0.7;}
-      h1 { font-size: 24pt; text-align: center}
-      h2 { font-size: 18pt; text-align: center}
-      h3 { font-size: 45px; text-align: center}
-      p { font-size: 1em; }
-      p1 { font-size: 24pt; }
-      a { font-size: 100%; }
-      span { font-size: x-small; }
-      body {
-		background: #000 url(https://cdna.artstation.com/p/assets/images/images/024/198/556/medium/mariusz-kozik-z-korekty-bpb-06-skora.jpg?1581615771); /* Фоновый цвет и фоновый рисунок*/
-		color: #fff; /*Цвет текста на странице*/
-		background-attachment: fixed; /* Фон страницы фиксируется */
-		background-repeat: repeat-x; /* Изображение повторяется по горизонтали */
-	}
+    {{!-- .bg-secondary {--bs-bg-opacity: 0.8;}
+    .bg-light {--bs-bg-opacity: 0.7;} --}}
+    h1 { font-size: 24pt; text-align: center}
+    h2 { font-size: 18pt; text-align: center}
+    h3 { font-size: 45px; text-align: center}
+    p { font-size: 1em; }
+    p1 { font-size: 24pt; }
+    a { font-size: 100%; }
+    span { font-size: x-small; }
+    body{
+            background: #000 url(https://cdna.artstation.com/p/assets/images/images/024/198/556/medium/mariusz-kozik-z-korekty-bpb-06-skora.jpg?1581615771); 
+            background-attachment: fixed; /* Фон страницы фиксируется */
+		    background-repeat: no-repeat; /* Изображение повторяется по горизонтали */
+            background-position: center center;
+            background-size: cover;
+            {{!-- background-size: contain; --}} /* закомменчено*/
+        }
+    .item {
+            opacity: .8;
+            transition: .3s ease;
+        }
+    .item:hover {
+            opacity: 1;
+        }
     </style>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

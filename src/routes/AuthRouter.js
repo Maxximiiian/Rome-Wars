@@ -4,7 +4,8 @@ import template from '../template';
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
-  res.send(template({ path: req.originalUrl }));
+router.post('/', async (req, res) => {
+  console.log(req.body);
+  res.sendStatus(200);
 });
 export default router;

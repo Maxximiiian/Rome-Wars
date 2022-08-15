@@ -1,15 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import play from 'audio-play';
+import load from 'audio-loader';
 
 export default function AuthPage() {
-  const signInHandler = (e) => {
-    e.preventDefault();
+  const playHandler = async () => {
+    const sound = await load('/sound/whoosh.mp3');
+    play(sound);
+  };
+
+  const signInHandler = async (event) => {
+    event.preventDefault();
+    const response = await fetch('/auth', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(Object.fromEntries(new FormData(event.target))),
+    });
+
+    // if (response.ok) {
+    //   setHeroesState((prev) => prev.filter((el) => el.id !== anyProp.id));
+    // }
   };
 
   return (
     <div className="mx-auto mt-5" style={{ width: '400px' }}>
       <div style={{ height: '250px' }} />
-      <form className="container bg-secondary rounded-3 py-3" align="center" onSubmit={signInHandler}>
+      <form className="container bg-secondary rounded-3 py-3 item" align="center" onSubmit={signInHandler}>
         <div className="mb-3">
           <h2>Username</h2>
           <input
@@ -36,8 +52,9 @@ export default function AuthPage() {
         <div className="mx-auto mt-5">
           <h2>Don't register yet?</h2>
         </div>
-        <Link to="/registration" className="btn btn-danger">Registration</Link>
+        <Link to="/registration" onClick={playHandler} className="btn btn-danger">Registration</Link>
       </form>
     </div>
   );
 }
+// fetch na /auth
